@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+
+  <body>
+    <script>
+      let a = 1;
+      let rand = setInterval(() => {
+        if (a == 1) {
+          a = 0;
+        } else {
+          a = 1;
+        }
+        // console.log(a);
+      }, 30000);
+
+      // 每隔3秒执行一次监控
+
+      let timer = setInterval(() => {
+        clearInterval(timer1);
+        // 若监控值a 为真且计数器i<3.则每隔5秒执行弹窗
+        if (a) {
+          openWin(a);
+          let i = 0;
+          //  弹窗定时器，每弹窗1 次。计数器i+1，
+          var timer1 = setInterval(() => {
+            if (i < 3) {
+              openWin(a);
+              i++;
+              console.log(i);
+            }
+          }, 5000);
+        }
+      }, 20000);
+
+      function openWin(a) {
+        myWindow = window.open('', '', 'width=200,height=100');
+        //${a}会出现bug
+        myWindow.document.write(`<p>有${a}警告</p >`);
+        myWindow.focus();
+      }
+    </script>
+  </body>
+</html>
